@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+	<appender name="sysLog" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d [%-5level] [%thread] %logger{10}[%method:%line] - %msg %n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="serverLog" class="ch.qos.logback.core.FileAppender">
+		<file>D:\dev\logs\server.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>D:\dev\logs\server.%d{yyyy-MM-dd}.log</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d [%-5level] [%thread] %logger{10}[%method:%line] - %msg %n</pattern>
+		</encoder>
+	</appender>
+	<appender name="appLog" class="ch.qos.logback.core.FileAppender">
+		<file>D:\dev\logs\app.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>D:\dev\logs\app.%d{yyyy-MM-dd}.log</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d [%-5level] [%thread] %logger{10}[%method:%line] - %msg %n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- WAS 동작 로그 -->
+	<logger name="pe.kr.ddakker.was.server" level="DEBUG" additivity="false">
+		<appender-ref ref="sysLog" />
+		<appender-ref ref="serverLog" />
+	</logger>
+	
+	<!-- 어플리케이션 로그 -->
+	<logger name="pe.kr.ddakker.was.app" level="DEBUG" additivity="false">
+		<appender-ref ref="sysLog" />
+		<appender-ref ref="appLog" />
+	</logger>
+
+
+
+
+	<root level="DEBUG">
+		<appender-ref ref="sysLog" />
+	</root>
+</configuration>
