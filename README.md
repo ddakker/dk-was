@@ -9,7 +9,7 @@
 0-1. 빌드
 	mvn clean package 시 logback 등 의존된 라이브러리 참조 문제로 package 시점에 copy-dependencies 를 추가 하였습니다.
 	그래서 was.jar 외에 /dependency/*.jar 파일들이 생기게 되었습니다.
-	꼭 단일의 파일로 묶어야 한다면 주석 해놓은 maven-assembly-plugin 부분과 교체하는 방법으로 할 수 있도록 하였습니다. 
+	꼭 단일의 파일로 묶어야 한다면 주석 해놓은 maven-assembly-plugin 부분과 교체하는 방법으로 할 수 있도록 하였습니다.(package goal 에 포함)
 
 
 
